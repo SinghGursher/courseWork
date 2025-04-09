@@ -1,20 +1,42 @@
+document.addEventListener("DOMContentLoaded", function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    
+    body.classList.remove('light-mode');
+    localStorage.setItem('theme', 'dark');
+    themeToggle.textContent = '☀️';
+   
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'light') {
+        body.classList.add('light-mode');
+        themeToggle.textContent = '🌙';
+    }
+    
+    themeToggle.addEventListener('click', function() {
+        body.classList.toggle('light-mode');
+        const theme = body.classList.contains('light-mode') ? 'light' : 'dark';
+        localStorage.setItem('theme', theme);
+        themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
+    });
+});
+
 function setGreeting() {
     const greetingElement = document.getElementById("greeting");
     const hour = new Date().getHours();
     let greetingText = "";
 
     if (hour < 12) {
-        greetingText = "🌅 Good Morning!";
+        greetingText = "Good Morning!";
     } else if (hour < 18) {
-        greetingText = "🌇 Good Afternoon!";
+        greetingText = "Good Afternoon!";
     } else {
-        greetingText = "🌃 Good Evening!";
+        greetingText = "Good Evening!";
     }
 
     greetingElement.textContent = greetingText;
 }
 
-// Call the function when the page loads
+
 window.onload = setGreeting;
 var skillLinks = document.getElementsByClassName("skillLinks");
         var skillcontents = document.getElementsByClassName("skillcontents");
@@ -31,44 +53,38 @@ var skillLinks = document.getElementsByClassName("skillLinks");
 
         }
 
-       // Replace your existing scrollspy code with this
-document.addEventListener("DOMContentLoaded", () => {
-    const navLinks = document.querySelectorAll("nav ul li a");
-    const sections = document.querySelectorAll("div[id]");
-    
-    // Make first nav link active by default (Home)
-    navLinks[0].classList.add("active");
-
-    function updateActiveSection() {
-        let current = "";
-        const scrollPosition = window.scrollY + 100; // Adjust for navbar height
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
+        document.addEventListener("DOMContentLoaded", () => {
+            const navLinks = document.querySelectorAll("nav ul li a");
+            const sections = document.querySelectorAll("div[id]");
             
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                current = section.getAttribute("id");
+            navLinks[0].classList.add("active");
+        
+            function updateActiveSection() {
+                let current = "";
+                const scrollPosition = window.scrollY + 100;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        current = section.getAttribute("id");
+                    }
+                });
+        
+                navLinks.forEach(link => {
+                    link.classList.remove("active");
+                    const href = link.getAttribute("href");
+                    if (href === `#${current}` || (current === "" && href === "#home")) {
+                        link.classList.add("active");
+                    }
+                });
             }
+        
+            updateActiveSection();
+            window.addEventListener("scroll", updateActiveSection);
         });
 
-        navLinks.forEach(link => {
-            link.classList.remove("active");
-            const href = link.getAttribute("href");
-            if (href === `#${current}` || (current === "" && href === "#Home")) {
-                link.classList.add("active");
-            }
-        });
-    }
-
-    // Run once on load
-    updateActiveSection();
-    
-    // Then on scroll
-    window.addEventListener("scroll", updateActiveSection);
-});
-
-// Update the JavaScript for dropdown version
 document.addEventListener('DOMContentLoaded', function() {
     const filterSelect = document.getElementById('project-filter');
     const gridItems = document.querySelectorAll('.grid-item');
@@ -88,8 +104,8 @@ document.addEventListener('DOMContentLoaded', function() {
 const blogPosts = [
     {
         id: 1,
-        title: "Getting Started with React",
-        excerpt: "Learn the basics of React and how to build your first component.",
+        title: "BOOTSTRAP & RAZOR PAGES",
+        excerpt: "Build and Deploy.",
         category: "webdev",
         date: "May 15, 2023",
         image: "pics/blog1.jpg",
@@ -97,8 +113,8 @@ const blogPosts = [
     },
     {
         id: 2,
-        title: "Machine Learning Fundamentals",
-        excerpt: "An introduction to the core concepts of machine learning.",
+        title: "GPT'S & AI MODELS",
+        excerpt: "Training Your Model",
         category: "tech",
         date: "June 2, 2023",
         image: "pics/blog2.jpg",
@@ -106,17 +122,15 @@ const blogPosts = [
     },
     {
         id: 3,
-        title: "The Future of Web Development",
-        excerpt: "Exploring emerging trends in web development technologies.",
+        title: "FUTURE OF AI",
+        excerpt: "Exploring web development technologies.",
         category: "webdev",
         date: "June 20, 2023",
         image: "pics/blog3.jpg",
         readTime: "6 min read"
     },
-    // Add more posts as needed
 ];
 
-// Function to render blog posts
 function renderBlogPosts(posts) {
     const container = document.getElementById('blog-posts-container');
     container.innerHTML = '';
@@ -125,7 +139,6 @@ function renderBlogPosts(posts) {
         const postElement = document.createElement('div');
         postElement.className = 'blog-post';
         postElement.innerHTML = `
-            <img src="${post.image}" alt="${post.title}">
             <div class="blog-post-content">
                 <div class="post-meta">
                     <span>${post.category}</span>
@@ -140,7 +153,7 @@ function renderBlogPosts(posts) {
     });
 }
 
-// Filter and search functionality
+
 function filterBlogPosts() {
     const searchTerm = document.getElementById('blog-search').value.toLowerCase();
     const category = document.getElementById('blog-filter').value;
@@ -155,25 +168,16 @@ function filterBlogPosts() {
     renderBlogPosts(filteredPosts);
 }
 
-// Initialize blog
 document.addEventListener('DOMContentLoaded', function() {
-    // Initial render
+    
     renderBlogPosts(blogPosts);
     
-    // Event listeners
+    
     document.getElementById('blog-search').addEventListener('input', filterBlogPosts);
     document.getElementById('blog-filter').addEventListener('change', filterBlogPosts);
 });
 
-// To load from JSON file instead:
-// fetch('blog-posts.json')
-//     .then(response => response.json())
-//     .then(data => {
-//         blogPosts = data;
-//         renderBlogPosts(blogPosts);
-//     });
 document.addEventListener("DOMContentLoaded", function() {
-    // Validation Configuration
     const fields = [
         { id: "fullName", regexp: /^[A-Za-z\s]+$/, error: "Only letters and spaces allowed" },
         { id: "email", regexp: /^\S+@\S+\.\S+$/, error: "Enter a valid email address" },
@@ -181,7 +185,6 @@ document.addEventListener("DOMContentLoaded", function() {
         { id: "message", regexp: /^.{10,}$/, error: "Message must be at least 10 characters" }
     ];
 
-    // Real-time Validation
     fields.forEach(field => {
         const input = document.getElementById(field.id);
         input.addEventListener("input", function() {
@@ -189,7 +192,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Validation Function
     function validateField(field) {
         const input = document.getElementById(field.id);
         const errorElement = document.getElementById(field.id + "Error");
@@ -206,7 +208,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Form Submission
     const form = document.getElementById("contactForm");
     form.addEventListener("submit", function(e) {
         e.preventDefault();
