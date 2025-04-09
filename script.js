@@ -1,23 +1,63 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
-    
-    body.classList.remove('light-mode');
-    localStorage.setItem('theme', 'dark');
-    themeToggle.textContent = '☀️';
-   
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme === 'light') {
-        body.classList.add('light-mode');
-        themeToggle.textContent = '🌙';
+
+    // Set dark mode as default if no preference exists
+    if (localStorage.getItem('theme') === 'light') {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode'); // Ensure light mode class is added
+        themeToggle.checked = true;
+    } else {
+        body.classList.add('dark-mode');
+        body.classList.remove('light-mode'); // Ensure light mode class is removed
+        themeToggle.checked = false;
     }
-    
-    themeToggle.addEventListener('click', function() {
-        body.classList.toggle('light-mode');
-        const theme = body.classList.contains('light-mode') ? 'light' : 'dark';
-        localStorage.setItem('theme', theme);
-        themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
+
+    themeToggle.addEventListener('change', function() {
+        if (this.checked) {
+            body.classList.remove('dark-mode');
+            body.classList.add('light-mode'); // Ensure light mode class is added
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.classList.add('dark-mode');
+            body.classList.remove('light-mode'); // Ensure light mode class is removed
+            localStorage.setItem('theme', 'dark');
+        }
     });
+});
+
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const spinner = document.querySelector('.loading-spinner');
+    spinner.style.display = 'inline-block';
+    
+    // Your existing form validation
+    let isValid = true;
+    // ... validation code ...
+    
+    if (isValid) {
+        const msgElement = document.getElementById("msg");
+        const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL'; // Ensure this is the correct URL
+        
+        fetch(scriptURL, { method: 'POST', body: new FormData(this)})
+            .then(response => {
+                msgElement.textContent = "Message sent successfully!";
+                msgElement.style.color = "#08fdd8";
+                spinner.style.display = 'none';
+                setTimeout(() => {
+                    msgElement.textContent = "";
+                }, 5000);
+                this.reset();
+            })
+            .catch(error => {
+                msgElement.textContent = "Error! Please try again.";
+                msgElement.style.color = "#ff004f";
+                spinner.style.display = 'none';
+                console.error('Error!', error.message);
+            });
+    } else {
+        spinner.style.display = 'none';
+    }
 });
 
 function setGreeting() {

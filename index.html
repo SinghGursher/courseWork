@@ -20,10 +20,14 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contacts</a></li>
             </ul>
+            <div class="theme-toggle-container">
+                <label class="theme-toggle">
+                  <input type="checkbox" id="themeToggle">
+                  <span class="slider round"></span>
+                </label>
+              </div>
         </nav>
-        <button id="theme-toggle" class="theme-button">
-            🌙
-          </button>
+        
         <div class="headerText">
             <h1><span>M</span><span>y</span>Portfolio</h1>
             <p>Full-Stack Developer</p>
@@ -196,8 +200,15 @@
                         
                         <textarea name="Message" id="message" rows="4" placeholder="Your Message" required></textarea>
                         <span class="error" id="messageError"></span>
+
+                        <!-- Replace the loading bars with this -->
+
                         
                         <button type="submit" class="btn btn2">Submit</button>
+
+                        <div class="loading-spinner" style="display: none;">
+                            <img src="pictures/loading.png" alt="Loading...">
+                        </div>
                         <span id="msg"></span>
                     </form>
                 </div>
