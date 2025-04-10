@@ -631,15 +631,11 @@ input.error, textarea.error {
 }
 
 .social-icons a {
-    color: #ababab;
+    color: #ff004f;
     font-size: 1.5rem;
     transition: all 0.3s;
 }
 
-.social-icons a:hover {
-    color: #08fdd8;
-    transform: translateY(-5px);
-}
 
 form input, 
 form textarea {
@@ -788,11 +784,11 @@ body.light-mode .error {
 }
 
 body.light-mode .social-icons a {
-    color: #555 !important;
+    color: #ff004f !important;
 }
 
 body.light-mode .social-icons a:hover {
-    color: #007BFF;
+    color: #08fdd8;
 }
 
 /* Theme Toggle Styles */
@@ -1005,7 +1001,12 @@ input:checked + .slider {
         padding: 8px 12px;
     }
 }
- 
+
+
+.social-icons a:hover {
+    color: #08fdd8; !important;
+    transform: translateY(-5px); !important;
+}
 
 
 
