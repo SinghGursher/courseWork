@@ -125,16 +125,21 @@ var skillLinks = document.getElementsByClassName("skillLinks");
             window.addEventListener("scroll", updateActiveSection);
         });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const filterSelect = document.getElementById('project-filter');
-    const gridItems = document.querySelectorAll('.grid-item');
-    
-    filterSelect.addEventListener('change', () => {
-        const filterValue = filterSelect.value;
+// Project Filtering
+const filterBtns = document.querySelectorAll('.filter-btn');
+const gridItems = document.querySelectorAll('.grid-item');
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Update active button
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
         
+        // Filter projects
+        const category = btn.dataset.category;
         gridItems.forEach(item => {
-            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                item.style.display = 'block';
+            if (category === 'all' || item.dataset.category === category) {
+                item.style.display = 'flex';
             } else {
                 item.style.display = 'none';
             }

@@ -103,17 +103,15 @@
     </div>
     <div id="projects">
         <div class="container">
-            <h1 class="projs">Projects</h1>
-            
-            <div class="filter-dropdown">
-                <select id="project-filter" class="filter-select">
-                    <option value="all">All Projects</option>
-                    <option value="web">Web Development</option>
-                    <option value="data">Data Science</option>
-                    <option value="other">Other Projects</option>
-                </select>
+            <div class="projects-filter-container">
+                <h1 class="projs">Projects</h1>
+                <div class="project-filters">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="web">Web</button>
+                    <button class="filter-btn" data-category="ai">AI</button>
+                    <button class="filter-btn" data-category="data">Data</button>
+                </div>
             </div>
-            
 
             <div class="grid-container">
                 <div class="grid-item" data-category="web">
