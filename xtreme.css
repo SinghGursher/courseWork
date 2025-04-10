@@ -1,37 +1,62 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* Add at the top with your other root variables */
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     --side-padding: 60px;
     --max-width: 1400px;
     --vertical-spacing: 80px;
-}
+    --nav-height: 70px;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Raleway", sans-serif;
+  }
+  
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background: #080808;
+    color: #fff;
+    padding-top: var(--nav-height);
+  }
 
-/* Add in the body/navbar section */
-body {
-    padding-top: 0; /* Remove previous padding-top */
-    margin-top: 0;
-}
+  #home {
+    height: 100vh;
+    padding: 0 var(--side-padding);
+    margin-top: calc(-1 * var(--nav-height));
+    background-image: url(pictures/kanairoCity.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+  }
+  
+  .headerText {
+    padding: 0 var(--side-padding);
+  }
+  
 
-nav {
-    padding: 15px var(--side-padding) !important; /* Replace existing nav padding */
-}
-
-/* Add in your container section */
 .container, .container1 {
     padding: 0 var(--side-padding);
     max-width: var(--max-width);
     margin: 0 auto;
 }
 
-/* Add in your section styling area */
 section {
     padding-top: var(--vertical-spacing);
     padding-bottom: var(--vertical-spacing);
 }
 
-/* Add new alignment rules after all existing content */
-/* ===== Alignment Fixes ===== */
 .subtitle, .projs {
     padding: 0 var(--side-padding);
     width: 100%;
@@ -73,40 +98,6 @@ section {
     }
 }
 
-/* Add to the very top of your CSS */
-html, body {
-    overflow-x: hidden; /* Prevent horizontal scroll */
-    max-width: 100vw; /* Ensure body doesn't exceed viewport */
-    
-}
-
-/* Check these elements */
-.container1, nav {
-    width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
-    box-sizing: border-box; /* Include padding in width calculation */
-}
-
-nav ul {
-    flex-wrap: wrap; /* Allow menu items to wrap on small screens */
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    
-    box-sizing: inherit;
-    font-family: "Raleway", sans-serif;
-}
-
-body {
-    margin: 0;
-    background: #080808;
-    --vertical-spacing: 40px;
-    color: #fff;
-}
-
 h1 {
     font-size: 3rem;
     padding-top: 50px;
@@ -124,26 +115,13 @@ h1 {
     color: #ffd505;
 }
 
-#home {
-    background-image: url(pictures/kanairoCity.jpg);
-    width: 100%;
-    height: 100vh;
-    background-position: center;
-    background-size: cover;
-}
-
 .container, .container1 {
     width: 100%;
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 var(--side-padding);
     box-sizing: border-box;
-  }
-
- 
-section {
-    padding-top: var(--vertical-spacing);
-    padding-bottom: var(--vertical-spacing);
+    padding-top: 20px;
   }
 
 .container1 .theme-toggle-container{
@@ -165,14 +143,12 @@ nav {
 
 }
 
-html {
-    scroll-behavior: smooth;
-}
 nav ul {
     display: flex;
+    list-style: none;
+    gap: 30px;
     margin: 0;
     padding: 0;
-    flex-wrap: wrap;
 }
 
 nav ul li {
@@ -188,9 +164,6 @@ nav ul li a {
     position: relative;
     padding-bottom: 5px;
 }
-
-
-
 
 nav ul li a::after {
     content: '';
@@ -222,11 +195,6 @@ nav ul li a.active::after {
 }
   
 
-.headerText {
-    margin-top: 2.7%;
-    font-size: 30px;
-}
-
 .row img {
     width: auto;
     height: 450px;
@@ -242,22 +210,18 @@ nav ul li a.active::after {
 
 .row {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
+    gap: 40px;
+    width: 100%;
+  }
 
-.about1 {
-    flex-basis: 30%;
-}
-
-.about2 {
-    flex-basis: 60%;
-}
+  .about1 { flex: 1; }
+  .about2 { flex: 2; }
 
 .subtitle {
     font-size: 60px;
     font-weight: 500;
-    padding: 50px;
+    margin-bottom: 40px;
+    padding-top: 50px;
     color: #fff;
 }
 
@@ -317,22 +281,52 @@ nav ul li a.active::after {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    margin: 20px auto;
-    width: 90%;
+    width: 100%;
 }
 
 .grid-item {
     background: #262626; 
     border-radius: 10px;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     transition: transform 0.3s;
 }
 
 .grid-item:hover {
     transform: translateY(-5px);
+}
+
+* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+  :root {
+    --side-padding: 40px;
+    --vertical-spacing: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --side-padding: 30px;
+    --vertical-spacing: 50px;
+  }
+  
+  .row {
+    flex-direction: column;
+  }
+  
+  nav ul {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --side-padding: 20px;
+    --vertical-spacing: 40px;
+  }
+  
+  .subtitle {
+    font-size: 2.5rem;
+  }
 }
 
 .projs {
@@ -388,8 +382,6 @@ nav ul li a.active::after {
 .view-button:hover {
     background: #0056b3; 
 }
-
-
 
 @keyframes spin {
     
@@ -450,8 +442,6 @@ footer {
 footer p {
     font-size: 1.1rem;
 }
-
-
 
 #greeting {
     font-size: 2rem;
@@ -583,10 +573,6 @@ input.error, textarea.error {
     margin-bottom: 30px;
 }
 
-.row {
-    margin-left: 50px;
-}
-
 .contact-left {
     flex-basis: 55%;
     padding-right: 30px;
@@ -685,10 +671,6 @@ textarea:valid {
     border-color: #08fdd8 !important;
 }
 
-#home {
-    color: white;
-}
-
 #home .headerText h1,
 #home .headerText p {
     color: white;
@@ -720,12 +702,9 @@ body.light-mode #home {
     color: white;
 }
 
-
-
 body.light-mode #home .headerText h1 span:nth-child(1) {
     color: #ff004f;
 }
-
 
 body.light-mode #about,
 body.light-mode #about p,
@@ -733,18 +712,15 @@ body.light-mode #about .skillcontents ul li {
     color: #111 !important;
 }
 
-
 body.light-mode .subtitle,
 body.light-mode .projs,
 body.light-mode .section-title {
     color: #111 !important;
 }
 
-
 body.light-mode nav ul li a {
     color: #fff !important;
 }
-
 
 body.light-mode .container,
 body.light-mode .grid-item {
@@ -752,12 +728,10 @@ body.light-mode .grid-item {
     border: 1px solid #ddd;
 }
 
-
 body.light-mode .theme-button {
     background-color: transparent;
     color: #111;
 }
-
 
 /* Contact section fixes */
 /* Contact Section - Force Light Mode Styles */
@@ -864,59 +838,18 @@ body:not(.dark-mode) {
     color: #121212;
 }
 
-/* Keep original navbar color in both modes */
-nav {
-    background-color: ; /* your original navbar color */
-}
+
 
 /* Toggle styles (updated for dark default) */
 input:checked + .slider {
     background-color: #ffd505; /* Color when in light mode */
 }
 
-/* Other existing toggle styles remain the same */
 
 
-
-/* Fix horizontal scrolling */
-html, body {
-    overflow-x: hidden;
-    width: 100%;
-    position: relative;
-}
-
-/* Fix navigation layout */
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: 0 !important; /* Remove any default margins */
-    padding: 15px var(--side-padding) !important;
-    max-width: 100vw;
-    box-sizing: border-box;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-body {
-    padding-top: 120px; /* Should match nav height */
-}
-
-/* Fix container widths */
-.container, .container1 {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    padding: 20px;
-}
 
 /* Fix project grid */
-.grid-container {
-    width: 100%;
-    padding: 0 20px;
-    box-sizing: border-box;
-}
+
 
 /* Remove any negative margins */
 * {
@@ -937,11 +870,6 @@ body {
     margin: 30px 0;
 }
 
-/* Ensure all content stays within viewport */
-section {
-    width: 100%;
-    overflow: hidden;
-}
 
 @media (max-width: 768px) {
     nav ul {
@@ -1011,27 +939,14 @@ section {
 
 /* Main containers */
 
-  
+
   /* Full-width sections */
   #home, #about, #blog, #projects, #contact {
     padding: 0 var(--side-padding);
     box-sizing: border-box;
   }
 
-  .headerText {
-    margin-left: 0;
-    padding-left: var(--side-padding);
-    padding-right: var(--side-padding);
-  }
-
-  .grid-container {
-    padding: 0;
-    width: 100%;
-  }
-  
-  .grid-item {
-    margin: 0;
-  }
+ 
 
 
  
