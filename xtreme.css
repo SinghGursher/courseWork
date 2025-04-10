@@ -1,9 +1,83 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* Add at the top with your other root variables */
+:root {
+    --side-padding: 60px;
+    --max-width: 1400px;
+    --vertical-spacing: 80px;
+}
+
+/* Add in the body/navbar section */
+body {
+    padding-top: 0; /* Remove previous padding-top */
+    margin-top: 0;
+}
+
+nav {
+    padding: 15px var(--side-padding) !important; /* Replace existing nav padding */
+}
+
+/* Add in your container section */
+.container, .container1 {
+    padding: 0 var(--side-padding);
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* Add in your section styling area */
+section {
+    padding-top: var(--vertical-spacing);
+    padding-bottom: var(--vertical-spacing);
+}
+
+/* Add new alignment rules after all existing content */
+/* ===== Alignment Fixes ===== */
+.subtitle, .projs {
+    padding: 0 var(--side-padding);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.row, 
+.grid-container,
+.blog-controls,
+.blog-posts,
+.contact-section .row {
+    padding: 0 var(--side-padding);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@media (max-width: 1200px) {
+    :root {
+        --side-padding: 40px;
+        --vertical-spacing: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --side-padding: 30px;
+        --vertical-spacing: 50px;
+    }
+    
+    .subtitle, .projs {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --side-padding: 20px;
+        --vertical-spacing: 40px;
+    }
+}
+
 /* Add to the very top of your CSS */
 html, body {
     overflow-x: hidden; /* Prevent horizontal scroll */
     max-width: 100vw; /* Ensure body doesn't exceed viewport */
+    
 }
 
 /* Check these elements */
@@ -28,9 +102,8 @@ nav ul {
 
 body {
     margin: 0;
-    padding: 0;
     background: #080808;
-    padding-top: 80px;
+    --vertical-spacing: 40px;
     color: #fff;
 }
 
@@ -59,14 +132,19 @@ h1 {
     background-size: cover;
 }
 
-.container {
-    padding: 20px 10%;
-}
-
-.container1 {
-    padding: 20px ;
+.container, .container1 {
     width: 100%;
-}
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--side-padding);
+    box-sizing: border-box;
+  }
+
+ 
+section {
+    padding-top: var(--vertical-spacing);
+    padding-bottom: var(--vertical-spacing);
+  }
 
 .container1 .theme-toggle-container{
     right: 0;
@@ -84,7 +162,7 @@ nav {
     left: 0;
     right: 0;
     margin: 0;
-    padding-left: 50px;
+
 }
 
 html {
@@ -147,7 +225,6 @@ nav ul li a.active::after {
 .headerText {
     margin-top: 2.7%;
     font-size: 30px;
-    margin-left: 14.5%;
 }
 
 .row img {
@@ -401,7 +478,6 @@ footer p {
     gap: 15px;
     margin: 30px 0;
     flex-wrap: wrap;
-    padding-left: 50px;
 }
 
 #blog-search {
@@ -431,7 +507,6 @@ footer p {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 20px;
-    padding-left: 50px;
 }
 
 .blog-post {
@@ -796,7 +871,7 @@ nav {
 
 /* Toggle styles (updated for dark default) */
 input:checked + .slider {
-    background-color: #2196F3; /* Color when in light mode */
+    background-color: #ffd505; /* Color when in light mode */
 }
 
 /* Other existing toggle styles remain the same */
@@ -817,13 +892,15 @@ nav {
     left: 0;
     right: 0;
     margin: 0 !important; /* Remove any default margins */
-    padding: 15px 20px !important;
+    padding: 15px var(--side-padding) !important;
+    max-width: 100vw;
+    box-sizing: border-box;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 body {
-    padding-top: 70px; /* Should match nav height */
+    padding-top: 120px; /* Should match nav height */
 }
 
 /* Fix container widths */
@@ -931,3 +1008,30 @@ section {
     align-items: center;
     vertical-align: middle; 
 }
+
+/* Main containers */
+
+  
+  /* Full-width sections */
+  #home, #about, #blog, #projects, #contact {
+    padding: 0 var(--side-padding);
+    box-sizing: border-box;
+  }
+
+  .headerText {
+    margin-left: 0;
+    padding-left: var(--side-padding);
+    padding-right: var(--side-padding);
+  }
+
+  .grid-container {
+    padding: 0;
+    width: 100%;
+  }
+  
+  .grid-item {
+    margin: 0;
+  }
+
+
+ 
