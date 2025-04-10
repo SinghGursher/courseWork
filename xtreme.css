@@ -359,22 +359,17 @@ nav ul li a.active::after {
     margin-top: 15px;
 }
 
-.view-button {
-    display: inline-block;
-    background: #ff004f;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
+.project-info a {
+    color: #ff004f;
     text-decoration: none;
-    transition: background 0.3s;
-    margin-top: 15px;
-    white-space: nowrap;
-    min-width: 120px;
-}
-
-.view-button:hover {
-    background: #0056b3; 
-}
+    font-weight: bold; /* Optional for emphasis */
+  }
+  
+  .project-info a:hover {
+    color: #08fdd8/* Optional hover effect */
+  }
+  
+  
 
 @keyframes spin {
     
@@ -1011,6 +1006,7 @@ input:checked + .slider {
     }
 }
  
+
 
 
  
