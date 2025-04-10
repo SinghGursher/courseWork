@@ -295,7 +295,6 @@ nav ul li a.active::after {
     transform: translateY(-5px);
 }
 
-* ===== RESPONSIVE ===== */
 @media (max-width: 1200px) {
   :root {
     --side-padding: 40px;
@@ -463,6 +462,7 @@ footer p {
     }
 }
 
+
 .blog-controls {
     display: flex;
     gap: 15px;
@@ -470,15 +470,11 @@ footer p {
     flex-wrap: wrap;
 }
 
-#blog-search {
-    flex: 2;
-    min-width: 200px;
-    padding: 12px;
-    background: #262626;
-    border: 1px solid #444;
-    color: white;
-    border-radius: 5px;
-    font-family: "Raleway", sans-serif;
+.blog-posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
 }
 
 #blog-filter {
@@ -492,11 +488,15 @@ footer p {
     font-family: "Raleway", sans-serif;
 }
 
-.blog-posts {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 20px;
+#blog-search {
+    flex: 2;
+    min-width: 200px;
+    padding: 12px;
+    background: #262626;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 5px;
+    font-family: "Raleway", sans-serif;
 }
 
 .blog-post {
@@ -838,38 +838,10 @@ body:not(.dark-mode) {
     color: #121212;
 }
 
-
-
 /* Toggle styles (updated for dark default) */
 input:checked + .slider {
     background-color: #ffd505; /* Color when in light mode */
 }
-
-
-
-
-/* Fix project grid */
-
-
-/* Remove any negative margins */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Fix contact section layout */
-.contact-section .row {
-    margin-left: 0;
-    padding: 0 20px;
-}
-
-/* Fix blog controls */
-.blog-controls {
-    padding-left: 20px;
-    margin: 30px 0;
-}
-
 
 @media (max-width: 768px) {
     nav ul {
@@ -889,10 +861,6 @@ input:checked + .slider {
     }
 }
 
-/* Add to your light mode styles */
-
-
-/* Specifically protect home section text */
 #home .headerText h1,
 #home .headerText p {
     color: white !important;
