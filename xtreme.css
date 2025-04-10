@@ -631,7 +631,7 @@ input.error, textarea.error {
 }
 
 .social-icons a {
-    color: #ff004f;
+    color: #ff004f !important;
     font-size: 1.5rem;
     transition: all 0.3s;
 }
@@ -763,13 +763,13 @@ body.light-mode #contact .subtitle {
 
 body.light-mode .contact-info {
     background: #fff !important;
-    color: #333 !important;
+    color: #333 ;
     border: 1px solid #ddd !important;
 }
 
 body.light-mode .contact-info p,
 body.light-mode .contact-info i {
-    color: #333 !important;
+    color: #333 ;
 }
 
 body.light-mode form input,
@@ -1004,8 +1004,8 @@ input:checked + .slider {
 
 
 .social-icons a:hover {
-    color: #08fdd8; !important;
-    transform: translateY(-5px); !important;
+    color: #08fdd8 !important;
+    transform: translateY(-5px) !important;
 }
 
 
