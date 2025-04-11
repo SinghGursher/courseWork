@@ -754,7 +754,6 @@ body.light-mode nav ul li a {
 body.light-mode .container,
 body.light-mode .grid-item {
     background-color: transparent;
-    border: 1px solid #ddd;
 }
 
 body.light-mode .theme-button {
@@ -766,7 +765,7 @@ body.light-mode .theme-button {
 /* Contact Section - Force Light Mode Styles */
 /* Contact Section Light Mode Fixes */
 body.light-mode #contact {
-    background: #f8f9fa !important;
+    background: #ffffff !important;
 }
 
 body.light-mode #contact .subtitle {
@@ -774,7 +773,7 @@ body.light-mode #contact .subtitle {
 }
 
 body.light-mode .contact-info {
-    background: #fff !important;
+    background: transparent !important;
     color: #333 ;
     border: 1px solid #ddd !important;
 }
@@ -786,7 +785,7 @@ body.light-mode .contact-info i {
 
 body.light-mode form input,
 body.light-mode form textarea {
-    background: #fff !important;
+    background: transparent !important;
     color: #333 !important;
     border: 1px solid #ddd !important;
 }
