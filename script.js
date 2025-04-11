@@ -210,6 +210,7 @@ const blogPosts = [
         image: "pics/blog2.jpg",
         readTime: "8 min read"
     },
+    
     {
         id: 3,
         title: "FUTURE OF AI",
@@ -218,6 +219,15 @@ const blogPosts = [
         date: "June 20, 2023",
         image: "pics/blog3.jpg",
         readTime: "6 min read"
+    },
+    {
+        id: 4,
+        title: "THE BLUE NOWHERE",
+        excerpt: "Free.",
+        category: "career",
+        date: "May 15, 2023",
+        image: "pics/blog1.jpg",
+        readTime: "5 min read"
     },
 ];
 
