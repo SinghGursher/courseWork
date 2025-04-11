@@ -146,6 +146,51 @@ filterBtns.forEach(btn => {
         });
     });
 });
+
+// Modal functionality
+const modal = document.getElementById('project-modal');
+const closeModal = document.querySelector('.close-modal');
+
+function openProjectModal(projectId) {
+    // Find the project in your array
+    const project = projects.find(p => p.id === projectId);
+    if (!project) return;
+
+    // Update modal content
+    document.getElementById('modal-title').textContent = project.title;
+    document.getElementById('modal-image').src = project.image;
+    document.getElementById('modal-image').alt = project.title;
+    document.getElementById('modal-description').textContent = project.description;
+    document.getElementById('modal-live').href = project.liveUrl;
+    document.getElementById('modal-code').href = project.codeUrl;
+
+    // Show modal
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeProjectModal() {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Event listeners
+closeModal.addEventListener('click', closeProjectModal);
+
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        closeProjectModal();
+    }
+});
+
+// Add this to your existing project card generation code
+document.querySelectorAll('.view-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+        const projectId = parseInt(e.target.dataset.id);
+        openProjectModal(projectId);
+    });
+});
+
 const blogPosts = [
     {
         id: 1,
@@ -285,4 +330,148 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
         }
     });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Projects data array
+    const projects = [
+        {
+            id: 1,
+            title: "WEB DESIGN",
+            category: "web",
+            image: "pictures/web2.png",
+            description: "A responsive web design project with modern UI elements and smooth animations.",
+            liveUrl: "https://singhgursher.github.io/newForm",
+            codeUrl: "https://github.com/singhgursher/newForm"
+        },
+        {
+            id: 2,
+            title: "IMAGE GRAPHICS",
+            category: "data",
+            image: "pictures/js.png",
+            description: "Advanced image processing and graphics manipulation using JavaScript.",
+            liveUrl: "https://singhgursher.github.io/4035-Tables",
+            codeUrl: "https://github.com/your-repo"
+        },
+        {
+            id: 3,
+            title: "EPL DESIGN",
+            category: "data",
+            image: "pictures/css.png",
+            description: "Data visualization project showcasing English Premier League statistics.",
+            liveUrl: "https://singhgursher.github.io/epl",
+            codeUrl: "https://github.com/singhgursher/epl"
+        },
+        {
+            id: 4,
+            title: "LIBRARY SYSTEM",
+            category: "web",
+            image: "pictures/java1.png",
+            description: "Full-stack supermarket management system with inventory tracking.",
+            liveUrl: "https://singhgursher.github.io/books",
+            codeUrl: "https://github.com/your-repo"
+        },
+        {
+            id: 5,
+            title: "LOGIN PAGE",
+            category: "other",
+            image: "pictures/pyorg.png",
+            description: "Interactive browser-based game with multiplayer functionality.",
+            liveUrl: "https://singhgursher.github.io/js-regex-valiadtion_Singh_Gursher",
+            codeUrl: "https://github.com/SinghGursher/js-regex-valiadtion_Singh_Gursher"
+        },
+        {
+            id: 6,
+            title: "ONLINE SERVER",
+            category: "other",
+            image: "pictures/php.png",
+            description: "Cloud-based server solution with real-time data processing.",
+            liveUrl: "https://singhgursher.github.io/epl",
+            codeUrl: "https://github.com/your-repo"
+        }
+    ];
+
+    // DOM Elements
+    const gridContainer = document.querySelector('.grid-container');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const modal = document.getElementById('project-modal');
+    const closeModal = document.querySelector('.close-modal');
+
+    // Render all projects initially
+    renderProjects(projects);
+
+    // Filter projects
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Filter projects
+            const category = button.dataset.category;
+            const filteredProjects = category === 'all' 
+                ? projects 
+                : projects.filter(project => project.category === category);
+            
+            renderProjects(filteredProjects);
+        });
+    });
+
+    // Modal functionality
+    closeModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Render projects to the grid
+    function renderProjects(projectsToRender) {
+        gridContainer.innerHTML = '';
+        
+        projectsToRender.forEach(project => {
+            const projectElement = document.createElement('div');
+            projectElement.className = 'grid-item';
+            projectElement.dataset.category = project.category;
+            projectElement.innerHTML = `
+                <div class="project-image-container">
+                    <img src="${project.image}" alt="${project.title}" class="project-image">
+                </div>
+                <div class="project-info">
+                    <a href="#" class="project-link" data-id="${project.id}">${project.title}</a>
+                </div>
+            `;
+            gridContainer.appendChild(projectElement);
+        });
+
+        // Add click event to project links
+        document.querySelectorAll('.project-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const projectId = parseInt(link.dataset.id);
+                openProjectModal(projectId);
+            });
+        });
+    }
+
+    // Open modal with project details
+    function openProjectModal(projectId) {
+        const project = projects.find(p => p.id === projectId);
+        if (!project) return;
+
+        document.getElementById('modal-title').textContent = project.title;
+        document.getElementById('modal-image').src = project.image;
+        document.getElementById('modal-image').alt = project.title;
+        document.getElementById('modal-description').textContent = project.description;
+        document.getElementById('modal-live').href = project.liveUrl;
+        document.getElementById('modal-code').href = project.codeUrl;
+
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
 });
