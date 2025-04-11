@@ -386,8 +386,8 @@ document.addEventListener('DOMContentLoaded', function() {
             category: "other",
             image: "pictures/php.png",
             description: "Cloud-based server solution with real-time data processing.",
-            liveUrl: "https://singhgursher.github.io/epl",
-            codeUrl: "https://github.com/your-repo"
+            liveUrl: "https://user-form-app-flame.vercel.app/",
+            codeUrl: "https://example.com"
         }
     ];
 
