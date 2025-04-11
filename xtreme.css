@@ -4,6 +4,18 @@ html {
     scroll-behavior: smooth;
 }
 
+#home,
+#about,
+#blog,
+#projects,
+#contact {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
 :root {
     --side-padding: 60px;
     --max-width: 1400px;
@@ -936,7 +948,7 @@ input:checked + .slider {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-bottom: 30px;
+    margin-top: var(--grid-gap);
     width: 100%;
     padding-right: var(--side-padding);
 }
