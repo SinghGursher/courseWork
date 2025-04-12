@@ -11,25 +11,25 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Set dark mode as default if no preference exists
+  
     if (localStorage.getItem('theme') === 'light') {
         body.classList.remove('dark-mode');
-        body.classList.add('light-mode'); // Ensure light mode class is added
+        body.classList.add('light-mode');
         themeToggle.checked = true;
     } else {
         body.classList.add('dark-mode');
-        body.classList.remove('light-mode'); // Ensure light mode class is removed
+        body.classList.remove('light-mode'); 
         themeToggle.checked = false;
     }
 
     themeToggle.addEventListener('change', function() {
         if (this.checked) {
             body.classList.remove('dark-mode');
-            body.classList.add('light-mode'); // Ensure light mode class is added
+            body.classList.add('light-mode'); 
             localStorage.setItem('theme', 'light');
         } else {
             body.classList.add('dark-mode');
-            body.classList.remove('light-mode'); // Ensure light mode class is removed
+            body.classList.remove('light-mode'); 
             localStorage.setItem('theme', 'dark');
         }
     });
@@ -40,13 +40,12 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     const spinner = document.querySelector('.loading-spinner');
     spinner.style.display = 'inline-block';
     
-    // Your existing form validation
+   
     let isValid = true;
-    // ... validation code ...
-    
+   
     if (isValid) {
         const msgElement = document.getElementById("msg");
-        const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL'; // Ensure this is the correct URL
+        const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL';
         
         fetch(scriptURL, { method: 'POST', body: new FormData(this)})
             .then(response => {
@@ -134,17 +133,15 @@ var skillLinks = document.getElementsByClassName("skillLinks");
             window.addEventListener("scroll", updateActiveSection);
         });
 
-// Project Filtering
 const filterBtns = document.querySelectorAll('.filter-btn');
 const gridItems = document.querySelectorAll('.grid-item');
 
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        // Update active button
+    
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         
-        // Filter projects
         const category = btn.dataset.category;
         gridItems.forEach(item => {
             if (category === 'all' || item.dataset.category === category) {
@@ -156,16 +153,13 @@ filterBtns.forEach(btn => {
     });
 });
 
-// Modal functionality
 const modal = document.getElementById('project-modal');
 const closeModal = document.querySelector('.close-modal');
 
 function openProjectModal(projectId) {
-    // Find the project in your array
     const project = projects.find(p => p.id === projectId);
     if (!project) return;
 
-    // Update modal content
     document.getElementById('modal-title').textContent = project.title;
     document.getElementById('modal-image').src = project.image;
     document.getElementById('modal-image').alt = project.title;
@@ -173,7 +167,6 @@ function openProjectModal(projectId) {
     document.getElementById('modal-live').href = project.liveUrl;
     document.getElementById('modal-code').href = project.codeUrl;
 
-    // Show modal
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
 }
@@ -183,7 +176,6 @@ function closeProjectModal() {
     document.body.style.overflow = 'auto';
 }
 
-// Event listeners
 closeModal.addEventListener('click', closeProjectModal);
 
 window.addEventListener('click', (e) => {
@@ -192,7 +184,6 @@ window.addEventListener('click', (e) => {
     }
 });
 
-// Add this to your existing project card generation code
 document.querySelectorAll('.view-btn').forEach(button => {
     button.addEventListener('click', (e) => {
         const projectId = parseInt(e.target.dataset.id);
@@ -410,23 +401,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     ];
 
-    // DOM Elements
     const gridContainer = document.querySelector('.grid-container');
     const filterButtons = document.querySelectorAll('.filter-btn');
     const modal = document.getElementById('project-modal');
     const closeModal = document.querySelector('.close-modal');
 
-    // Render all projects initially
     renderProjects(projects);
 
-    // Filter projects
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Update active button
+
             filterButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
-            
-            // Filter projects
+
             const category = button.dataset.category;
             const filteredProjects = category === 'all' 
                 ? projects 
@@ -436,7 +423,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Modal functionality
     closeModal.addEventListener('click', () => {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
@@ -449,7 +435,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Render projects to the grid
     function renderProjects(projectsToRender) {
         gridContainer.innerHTML = '';
         
@@ -468,7 +453,6 @@ document.addEventListener('DOMContentLoaded', function() {
             gridContainer.appendChild(projectElement);
         });
 
-        // Add click event to project links
         document.querySelectorAll('.project-link').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -478,7 +462,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Open modal with project details
     function openProjectModal(projectId) {
         const project = projects.find(p => p.id === projectId);
         if (!project) return;
