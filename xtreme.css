@@ -1145,7 +1145,7 @@ body.light-mode .contact-info p i {
     font-size: 24px;
     background: none;
     border: none;
-    color: white;
+    color: #ff004f;
     z-index: 1001;
     cursor: pointer;
 }
