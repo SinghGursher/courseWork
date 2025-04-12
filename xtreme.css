@@ -15,7 +15,6 @@ html {
   justify-content: center;
 }
 
-
 :root {
     --side-padding: 60px;
     --max-width: 1400px;
@@ -23,25 +22,25 @@ html {
     --nav-height: 70px;
     --grid-gap: 50px;
   }
-  
+
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Raleway", sans-serif;
-  }
-  
-  html, body {
+}  
+
+html, body {
     overflow-x: hidden;
     max-width: 100vw;
     scroll-behavior: smooth;
-  }
-  
-  body {
+}  
+
+body {
     background: #080808;
     color: #fff;
     padding-top: var(--nav-height);
-  }
+}
 
   #home {
     height: 100vh;
@@ -662,7 +661,7 @@ input.error, textarea.error {
 
 .contact-right:hover {
     transform: translateY(-10px); /* Moves the element up by 10 pixels */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Optional: Adds a subtle shadow for depth */
+    
 }
 
 .contact-info {
@@ -838,15 +837,6 @@ body.light-mode .error {
     color: #dc3545 !important;
 }
 
-body.light-mode .social-icons a {
-    color: #ff004f !important;
-}
-
-body.light-mode .social-icons a:hover {
-    color: #08fdd8;
-}
-
-/* Theme Toggle Styles */
 .theme-toggle-container {
     margin-left: auto;
     padding: 0 20px;
@@ -1164,6 +1154,18 @@ input:checked + .slider {
 }
 
   /* LIGHT MODE: make h1s inside subtitle class red */
-  .light-mode .subtitle h1 {
+body.light-mode .subtitle  {
     color: #ff004f !important;
   }
+
+  body.light-mode .social-icons a i {
+    color: #ff004f !important;
+}
+
+body.light-mode .social-icons a:hover i {
+    color: #08fdd8 !important;
+}
+
+body.light-mode .contact-info p i {
+    color: red !important;
+}
