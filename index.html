@@ -11,23 +11,41 @@
     <script src="script.js" defer=""></script>
 </head>
 <body>
+    <button class="hamburger-menu">☰</button>
+<nav class="mobile-nav">
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contacts</a></li>
+        <li class="mobile-theme-toggle">
+            <label class="theme-toggle">
+                <input type="checkbox" id="mobileThemeToggle">
+                <span class="slider round"></span>
+                <span class="toggle-label">Dark Mode</span>
+            </label>
+        </li>
+    </ul>
+</nav>
+<div class="nav-overlay"></div>
     <div id="home">
         <div class="container1">
-            <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#contact">Contacts</a></li>
-            </ul>
-            <div class="theme-toggle-container">
-                <label class="theme-toggle">
-                  <input type="checkbox" id="themeToggle">
-                  <span class="slider round"></span>
-                </label>
-              </div>
-        </nav>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contacts</a></li>
+                </ul>
+                <div class="theme-toggle-container">
+                    <label class="theme-toggle">
+                        <input type="checkbox" id="themeToggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </nav>
         
         <div class="header-wrapper">
             <div class="headerText">

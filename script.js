@@ -1,7 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const themeToggle = document.getElementById('themeToggle');
-    const body = document.body;
-
     window.addEventListener('scroll', function () {
         const nav = document.querySelector("nav");
         if (window.scrollY > 50) {
@@ -11,28 +8,87 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-  
-    if (localStorage.getItem('theme') === 'light') {
-        body.classList.remove('dark-mode');
-        body.classList.add('light-mode');
-        themeToggle.checked = true;
-    } else {
-        body.classList.add('dark-mode');
-        body.classList.remove('light-mode'); 
-        themeToggle.checked = false;
+    const hamburger = document.querySelector('.hamburger-menu');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const overlay = document.querySelector('.nav-overlay');
+
+    hamburger.addEventListener('click', () => {
+        mobileNav.classList.toggle('show');
+        overlay.classList.toggle('show');
+    });
+
+    overlay.addEventListener('click', () => {
+        mobileNav.classList.remove('show');
+        overlay.classList.remove('show');
+    });
+
+    const desktopNav = document.querySelector('.desktop-nav');
+    window.addEventListener('scroll', () => {
+        if (window.innerWidth > 768) { 
+            if (window.scrollY > 50) {
+                desktopNav.classList.add('scrolled');
+            } else {
+                desktopNav.classList.remove('scrolled');
+            }
+        }
+    });
+
+    document.querySelectorAll('.mobile-nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileNav.classList.remove('show');
+            overlay.classList.remove('show');
+        });
+    });
+
+    const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+        
+    if (mobileThemeToggle) {
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        mobileThemeToggle.checked = (currentTheme === 'light');
+        
+        const desktopToggle = document.getElementById('themeToggle');
+        if (desktopToggle) {
+            desktopToggle.addEventListener('change', function() {
+                mobileThemeToggle.checked = this.checked;
+            });
+        }
+        
+        mobileThemeToggle.addEventListener('change', function() {
+            const isLightMode = this.checked;
+            document.body.classList.toggle('light-mode', isLightMode);
+            document.body.classList.toggle('dark-mode', !isLightMode);
+            localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
+            
+            if (desktopToggle) {
+                desktopToggle.checked = isLightMode;
+            }
+        });
     }
 
-    themeToggle.addEventListener('change', function() {
-        if (this.checked) {
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+    
+        if (localStorage.getItem('theme') === 'light') {
             body.classList.remove('dark-mode');
-            body.classList.add('light-mode'); 
-            localStorage.setItem('theme', 'light');
+            body.classList.add('light-mode');
+            themeToggle.checked = true;
         } else {
             body.classList.add('dark-mode');
             body.classList.remove('light-mode'); 
-            localStorage.setItem('theme', 'dark');
+            themeToggle.checked = false;
         }
-    });
+
+        themeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode'); 
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.add('dark-mode');
+                body.classList.remove('light-mode'); 
+                localStorage.setItem('theme', 'dark');
+            }
+        });
 });
 
 document.getElementById('contactForm').addEventListener('submit', function(e) {
@@ -343,7 +399,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Projects data array
     const projects = [
         {
             id: 1,
