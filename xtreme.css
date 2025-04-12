@@ -299,20 +299,23 @@ nav ul li a.active::after {
 .skillLinks:hover::after {
     width: 100%;
     color: #ff004f;
+    transition: width 0.3s;
 }
 
 .skillLinks::after {
     content: '';
-    height: 3px;
+    height: 1px;
     background: #ff004f;
     position: absolute;
     left: 0;
+    width: 0;
     bottom: -8px;
-    transition: 0.2s;
+    transition: width 0.3s;
 }
 
 .skillLinks.activeLink::after {
     width: 100%;
+    transition: width 0.3s;
 }
 
 .skillcontents ul li {
@@ -990,12 +993,8 @@ input:checked + .slider {
     left: 0;
     width: 0;
     height: 2px;
-    background: #08fdd8; 
+    background: #ff004f; 
     transition: width 0.3s ease;
-}
-
-.filter-btn:hover {
-    color: #08fdd8; 
 }
 
 .filter-btn:hover::after,
@@ -1003,9 +1002,6 @@ input:checked + .slider {
     width: 100%;
 }
 
-.filter-btn.active {
-    color: #08fdd8; 
-}
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
