@@ -1133,10 +1133,6 @@ body.light-mode .subtitle  {
     color: #ff004f !important;
 }
 
-body.light-mode .social-icons a:hover i {
-    color: #08fdd8 !important;
-}
-
 body.light-mode .contact-info p i {
     color: red !important;
 }
