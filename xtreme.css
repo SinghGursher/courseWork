@@ -76,6 +76,7 @@ section {
     box-sizing: border-box;
 }
 
+.row, 
 .grid-container,
 .blog-controls,
 .blog-posts,
@@ -133,6 +134,7 @@ h1 {
     margin: 0 auto;
     padding: 0 var(--side-padding);
     box-sizing: border-box;
+    padding-top: 20px;
   }
 
 .container1 .theme-toggle-container{
@@ -263,7 +265,7 @@ nav ul li a.active::after {
 
 .row {
     display: flex;
-    gap: 100px;
+    gap: 40px;
     width: 100%;
   }
 
@@ -277,6 +279,8 @@ nav ul li a.active::after {
     padding-top: 50px;
     color: #fff;
 }
+  
+
   
 
 .skills {
@@ -382,6 +386,12 @@ nav ul li a.active::after {
   }
 }
 
+.projs {
+    font-size: 60px;
+    font-weight: 500;
+    color: #fff;
+    padding: 50px;
+}
 
 .project-image-container {
     width: 100%;
@@ -641,7 +651,7 @@ input.error, textarea.error {
 
 .contact-right {
     flex-basis: 35%;
-    padding: 8px 0 0 0px;
+    padding: 8px 0 0 30px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -654,7 +664,7 @@ input.error, textarea.error {
     background: #1a1a1a;
     padding: 30px;
     border-radius: 10px;
-    height: 85%;
+    height: 80%;
 }
 
 .contact-info p {
@@ -714,6 +724,7 @@ form textarea:focus {
     cursor: pointer;
     background-color: #ffd505;
 }
+
 
 @media (max-width: 768px) {
     .row {
@@ -1125,5 +1136,3 @@ body.light-mode .subtitle  {
 body.light-mode .contact-info p i {
     color: red !important;
 }
-
-  
