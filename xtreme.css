@@ -150,12 +150,21 @@ nav {
     width: 100%;
     z-index: 1000;
     background-color: #ff004f;
-    padding: 15px 0 24px 0;
+    padding: 15px 0 15px 0;
+    color: white;
+    transition: background-color 0.3s ease, opacity 0.3s ease, color 0.3s ease;
+    opacity: 1;
     left: 0;
     right: 0;
     margin: 0;
 
 }
+
+nav.scrolled {
+    opacity: 0.8; /* fade out effect */
+    background-color: rgba(255, 0, 79, 0.2); /* semi-transparent red */
+}
+
 
 nav ul {
     display: flex;
@@ -177,7 +186,21 @@ nav ul li a {
     font-size: 18px;
     position: relative;
     padding-bottom: 5px;
+    transition: color 0.3s ease;  
 }
+
+nav.scrolled ul li a {
+    color: #ffd505 !important;
+}
+
+.light-mode nav.scrolled ul li a {
+    color: #ff004f !important;
+  }
+
+  .light-mode nav ul li a {
+    color: #000; /* black for light mode */
+  }
+  
 
 nav ul li a::after {
     content: '';
@@ -257,8 +280,9 @@ nav ul li a.active::after {
     padding-top: 50px;
     color: #fff;
 }
+  
 
-
+  
 
 .skills {
     display: flex;
@@ -792,11 +816,6 @@ body.light-mode .theme-button {
 body.light-mode #contact {
     background: #ffffff !important;
 }
-
-body.light-mode #contact .subtitle {
-    color: #333 !important;
-}
-
 body.light-mode .contact-info {
     background: transparent !important;
     color: #333 ;
@@ -1143,3 +1162,8 @@ input:checked + .slider {
         text-align: center;
     }
 }
+
+  /* LIGHT MODE: make h1s inside subtitle class red */
+  .light-mode .subtitle h1 {
+    color: #ff004f !important;
+  }

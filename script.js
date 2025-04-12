@@ -2,6 +2,15 @@ document.addEventListener("DOMContentLoaded", function() {
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
 
+    window.addEventListener('scroll', function () {
+        const nav = document.querySelector("nav");
+        if (window.scrollY > 50) {
+            nav.classList.add("scrolled");
+        } else {
+            nav.classList.remove("scrolled");
+        }
+    });
+
     // Set dark mode as default if no preference exists
     if (localStorage.getItem('theme') === 'light') {
         body.classList.remove('dark-mode');
